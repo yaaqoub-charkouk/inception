@@ -1,9 +1,18 @@
 FROM debian:bookworm 
 
-RUN apt-get update && apt-get install -y mariadb-server
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld # mysqld need the /run/mysqld folder to create socket
+RUN apt-get update && apt-get install -y mariadb-server gettext-base
+RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld 
+# mysqld need the /run/mysqld folder to create socket
 
-USER mysql
+
+COPY tools/init.sh /init.sh
+COPY tools/init.sql /init.sql
+
+RUN chmod +x /init.sh
+
+ENTRYPOINT ["/init.sh"]
+
+# USER mysql
 
 CMD ["mysqld"]
 
