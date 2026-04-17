@@ -14,7 +14,7 @@ ENTRYPOINT ["/init.sh"]
 
 # USER mysql
 
-CMD ["mysqld"]
+# CMD ["mysqld"]
 
 
 # mysqld can not run with root 
