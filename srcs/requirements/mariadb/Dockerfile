@@ -1,9 +1,10 @@
 FROM debian:bookworm 
 
 RUN apt-get update && apt-get install -y mariadb-server gettext-base
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld 
+RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
+ 
 # mysqld need the /run/mysqld folder to create socket
-
+RUN sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 COPY tools/init.sh /init.sh
 COPY tools/init.sql /init.sql

@@ -14,8 +14,11 @@ RUN wget https://wordpress.org/latest.tar.gz && \
     rm -rf latest.tar.gz wordpress
 
 RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
 
 RUN sed -i 's/daemonize = yes/daemonize = no/' /etc/php/8.2/fpm/php-fpm.conf
+
+RUN sed -i 's|^listen = .*|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
 
 COPY tools/init.sh /init.sh
 RUN chmod +x /init.sh

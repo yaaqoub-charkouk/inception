@@ -11,3 +11,6 @@ RUN openssl req -x509 -nodes -days 365 \
     -out /etc/ssl/certs/nginx.crt \
     -subj "/C=MA/ST=State/L=City/O=42/OU=1337/CN=localhost"
 
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+# ["bash"] is the debian default command
