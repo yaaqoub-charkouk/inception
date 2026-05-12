@@ -42,6 +42,15 @@ services:
       - inception
     restart: always
 
+
+  redis:
+    build: ./requirements/bonus/redis
+    image: redis
+    container_name: redis
+    env_file:
+      - .env
+    volumes:
+      - mariadb_data:/
 volumes:
   mariadb_data:
     driver: local
