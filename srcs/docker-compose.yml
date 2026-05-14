@@ -49,8 +49,6 @@ services:
     container_name: redis
     env_file:
       - .env
-    volumes:
-      - mariadb_data:/
     networks:
       - inception
 

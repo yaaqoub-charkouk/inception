@@ -9,6 +9,9 @@ if [ ! -f "wp-config.php" ]; then
     sed -i "s/username_here/$MYSQL_USER/" wp-config.php
     sed -i "s/password_here/$MYSQL_PASSWORD/" wp-config.php
     sed -i "s/localhost/$MYSQL_HOST/" wp-config.php
+
+    sed -i "/Happy publishing/i define( 'WP_REDIS_HOST', 'redis' );" wp-config.php
+
 fi
 
 exec php-fpm8.2 -F

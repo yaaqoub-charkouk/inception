@@ -1,7 +1,8 @@
 FROM debian:bookworm
 
-RUN apk update && apk add --no-cache redis
+RUN apt-get update && apt-get install -y redis-server && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 6379
 
-ENTRYPOINT ["redis-server"]
+ENTRYPOINT ["redis-server", "--protected-mode", "no"]
