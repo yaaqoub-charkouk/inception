@@ -52,6 +52,21 @@ services:
     networks:
       - inception
 
+  ftp:
+    build: ./requirements/bonus/ftp
+    image: ftp
+    container_name: ftp
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/ftp-data
+    depends_on:
+      - wordpress
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    networks:
+      - inception
 
 volumes:
   mariadb_data:
