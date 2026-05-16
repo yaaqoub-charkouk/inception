@@ -42,7 +42,6 @@ services:
       - inception
     restart: always
 
-
   redis:
     build: ./requirements/bonus/redis
     image: redis
@@ -67,6 +66,40 @@ services:
       - "30000-30009:30000-30009"
     networks:
       - inception
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    restart: always
+
+  static-site:
+    build: ./requirements/bonus/static-site
+    image: static-site
+    container_name: static-site
+    ports:
+      - "80:80"
+    networks:
+      - inception
+    restart: always
+
+  portainer:
+    build: ./requirements/bonus/portainer
+    image: portainer
+    container_name: portainer
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - inception
+    restart: always
 
 volumes:
   mariadb_data:

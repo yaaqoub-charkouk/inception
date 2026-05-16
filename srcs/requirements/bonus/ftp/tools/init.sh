@@ -9,4 +9,6 @@ mkdir -p /var/run/vsftpd/empty
 
 usermod -d /ftp-data $FTP_USER
 
+chown -R $FTP_USER:$FTP_USER /ftp-data
+
 exec vsftpd /etc/vsftpd.conf
