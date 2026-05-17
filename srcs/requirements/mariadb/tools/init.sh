@@ -3,6 +3,8 @@
 if [ ! -f "/var/lib/mysql/.initialized" ]
 then
     echo "======== First run ======="    
+    export MYSQL_HOST=localhost
+    
     su mysql -s /bin/bash -c "mysqld &"
 
     until mysqladmin ping --silent; do
