@@ -50,6 +50,7 @@ services:
       - .env
     networks:
       - inception
+    restart: always
 
   ftp:
     build: ./requirements/bonus/ftp
@@ -66,6 +67,7 @@ services:
       - "30000-30009:30000-30009"
     networks:
       - inception
+    restart: always
 
   adminer:
     build: ./requirements/bonus/adminer
