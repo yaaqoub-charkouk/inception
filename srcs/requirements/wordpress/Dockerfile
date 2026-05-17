@@ -7,11 +7,11 @@ RUN apt-get update && apt-get install -y  php-fpm \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
-RUN wget https://wordpress.org/latest.tar.gz && \
-    tar -xzf latest.tar.gz && \
+RUN wget https://wordpress.org/wordpress-6.7.2.tar.gz && \
+    tar -xzf wordpress-6.7.2.tar.gz && \
     mkdir -p /var/www/html && \
     mv wordpress/* /var/www/html && \
-    rm -rf latest.tar.gz wordpress
+    rm -rf wordpress-6.7.2.tar.gz wordpress
 
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
