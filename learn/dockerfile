@@ -1,6 +1,0 @@
-FROM debian:bookworm
-
-RUN apt update && upt install -y curl
-
-ENTRYPOINT ["bash"]
-
