@@ -1,4 +1,4 @@
-DATA_DIR = ~/cursus/data
+DATA_DIR = ~/data
 COMPOSE = docker compose -f srcs/docker-compose.yml
 
 all: setup build up

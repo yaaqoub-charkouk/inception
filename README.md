@@ -19,7 +19,7 @@ The infrastructure includes:
 | **Portainer** *(bonus)* | Docker container management dashboard |
 | **Static Site** *(bonus)* | Personal portfolio (HTML/CSS/JS — no PHP) |
 
-All containers communicate over a custom Docker bridge network. Data persists via Docker named volumes mapped to `~/cursus/data/` on the host.
+All containers communicate over a custom Docker bridge network. Data persists via Docker named volumes mapped to `~/data/` on the host.
 
 ---
 

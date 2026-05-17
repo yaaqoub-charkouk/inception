@@ -70,7 +70,7 @@ secrets/
 | Command | Description |
 |---|---|
 | `make` / `make all` | Create data directories, build images, start containers |
-| `make setup` | Create `~/cursus/data/mariadb` and `~/cursus/data/wordpress` |
+| `make setup` | Create `~/data/mariadb` and `~/data/wordpress` |
 | `make build` | Build all Docker images from Dockerfiles |
 | `make up` | Start all containers in detached mode |
 | `make down` | Stop and remove all containers |
@@ -86,7 +86,7 @@ secrets/
 
 ```
 make
- ├── make setup     → mkdir -p ~/cursus/data/{mariadb,wordpress}
+ ├── make setup     → mkdir -p ~/data/{mariadb,wordpress}
  ├── make build     → docker compose -f srcs/docker-compose.yml build
  └── make up        → docker compose -f srcs/docker-compose.yml up -d
 ```
@@ -145,8 +145,8 @@ docker system df -v
 
 | Volume | Container Mount | Host Path |
 |---|---|---|
-| `mariadb_data` | `/var/lib/mysql` | `~/cursus/data/mariadb` |
-| `wordpress_data` | `/var/www/html` | `~/cursus/data/wordpress` |
+| `mariadb_data` | `/var/lib/mysql` | `~/data/mariadb` |
+| `wordpress_data` | `/var/www/html` | `~/data/wordpress` |
 
 Both volumes are Docker named volumes configured with `driver: local`, `type: none`, and `o: bind` — this maps them to specific host directories while keeping them manageable via Docker.
 
@@ -159,7 +159,7 @@ Both volumes are Docker named volumes configured with `driver: local`, `type: no
 
 - All container state and images (rebuilt on next `make`)
 - All volume data (databases, WordPress files)
-- The `~/cursus/data/` directory entirely
+- The `~/data/` directory entirely
 
 ### Initialization Logic
 

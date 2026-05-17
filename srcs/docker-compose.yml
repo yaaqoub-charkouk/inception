@@ -107,13 +107,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/cursus/data/mariadb
+      device: ~/data/mariadb
   wordpress_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/cursus/data/wordpress
+      device: ~/data/wordpress
 
 networks:
   inception:
