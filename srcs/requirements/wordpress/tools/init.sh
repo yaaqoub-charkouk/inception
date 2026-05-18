@@ -35,6 +35,12 @@ if ! wp core is-installed --allow-root; then
         --user_pass="$WP_USER_PASSWORD" \
         --role=author \
         --allow-root
+
+    wp config set WP_REDIS_HOST "redis" --type=constant --allow-root
+    wp config set WP_REDIS_PORT "6379" --type=constant --allow-root
+
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
 fi
 
 exec php-fpm8.2 -F
